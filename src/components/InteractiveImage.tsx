@@ -351,8 +351,10 @@ const VisitButton = styled.a`
   margin-top: 16px;
 
   &:hover {
-    background-color: #0056b3;
+    backdrop-filter: blur(3px);
+    background-color: rgba(14, 11, 11, 0.25);
     transform: translateY(-1px);
+    color: white;
   }
 `;
 
