@@ -86,13 +86,15 @@ function App() {
         onAreaLeave={handleAreaLeave}
       />
 
-      <AdminButton onClick={toggleAdmin}>
-        {showAdmin ? "Close Admin" : "Admin Dashboard"}
-      </AdminButton>
+      {import.meta.env.DEV && (
+        <AdminButton onClick={toggleAdmin}>
+          {showAdmin ? "Close Admin" : "Admin Dashboard"}
+        </AdminButton>
+      )}
 
       <Notification visible={!!notification}>{notification}</Notification>
 
-      {showAdmin && (
+      {showAdmin && import.meta.env.DEV && (
         <AdminDashboard
           imageSrc="/main_image.png"
           onSave={handleAdminSave}

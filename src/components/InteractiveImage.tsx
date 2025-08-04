@@ -42,7 +42,7 @@ export const InteractiveImage: React.FC<InteractiveImageProps> = ({
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleAreaMouseEnter = (area: HoverArea, event: React.MouseEvent) => {
+  const handleAreaMouseEnter = (area: HoverArea) => {
     setHoveredArea(area);
     onAreaHover?.(area);
   };
@@ -53,7 +53,7 @@ export const InteractiveImage: React.FC<InteractiveImageProps> = ({
     setTooltip((prev) => ({ ...prev, visible: false }));
   };
 
-  const handleAreaClick = (area: HoverArea) => {
+  const handleAreaClick = (area: HoverArea, _: React.MouseEvent) => {
     onAreaClick?.(area);
 
     console.log(area);
@@ -92,9 +92,9 @@ export const InteractiveImage: React.FC<InteractiveImageProps> = ({
               width={area.width}
               height={area.height}
               isHovered={hoveredArea?.id === area.id}
-              onMouseEnter={(e) => handleAreaMouseEnter(area, e)}
+              onMouseEnter={() => handleAreaMouseEnter(area)}
               onMouseLeave={() => handleAreaMouseLeave(area)}
-              onClick={() => handleAreaClick(area)}
+              onClick={(event) => handleAreaClick(area, event)}
             />
           ))}
         </ImageWrapper>

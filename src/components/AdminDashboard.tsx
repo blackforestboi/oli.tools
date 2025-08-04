@@ -261,7 +261,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [imageSize, setImageSize] = useState<{ width: number; height: number }>(
     { width: 0, height: 0 }
   );
-  const [actualImageSize, setActualImageSize] = useState<{
+  const [_, setActualImageSize] = useState<{
     width: number;
     height: number;
   }>({ width: 0, height: 0 });
